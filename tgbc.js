@@ -1,32 +1,54 @@
-// Update TGBC book of the month
-
 const fs = require('fs');
 const path = require('path');
 
 async function updateBook() {
   try {
-    console.log('Fetching Tough Guy Book Club site...');
-    const response = await fetch('https://www.toughguybookclub.com/books');
+    console.log('Fetching Tough Guy Book Club homepage...');
+    const response = await fetch('https://www.toughguybookclub.com/');
     const html = await response.text();
 
-    // Look for headings on the books page where selections are rendered
-    const regex = /<h[23][^>]*>(.*?)<\/h[23]>/gi;
-    let match;
-    let foundBook = null;
+    // Strip out script and style tags completely
+    const cleanedHtml = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                            .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
 
-    while ((match = regex.exec(html)) !== null) {
-      const text = match[1].replace(/<[^>]*>/g, '').trim();
-      // Identify book titles by looking for standard formatting (containing a dash or a year like 2026)
-      if (text.length > 3 && (text.includes('-') || /\(\d{4}\)/.test(text))) {
-        if (!text.toLowerCase().includes('tough guy') && !text.toLowerCase().includes('latest books')) {
-          foundBook = text;
-          break;
+    // Isolate the "Latest Books" section on the homepage
+    const latestBooksIndex = cleanedHtml.indexOf('Latest Books');
+    let candidateBooks = [];
+
+    if (latestBooksIndex !== -1) {
+      // Grab a chunk of text following the "Latest Books" heading
+      const sliceText = cleanedHtml.substring(latestBooksIndex, latestBooksIndex + 1500);
+      const lines = sliceText.split('\n');
+      
+      for (const line of lines) {
+        const text = line.replace(/<[^>]*>/g, '').trim();
+        // Look for lines that look like books (contain a dash and a 4-digit year like 2026)
+        if (text.length > 5 && text.includes('-') && /\(\d{4}\)/.test(text)) {
+          // Exclude unwanted UI strings
+          if (!text.toLowerCase().includes('tough guy') && !text.toLowerCase().includes('track your read')) {
+            candidateBooks.push(text);
+          }
         }
       }
     }
 
+    // Fallback if the section index changed: scan all lines with strict rules
+    if (candidateBooks.length === 0) {
+      const lines = cleanedHtml.split('\n');
+      for (const line of lines) {
+        const text = line.replace(/<[^>]*>/g, '').trim();
+        if (text.length > 5 && text.includes('-') && /\(\d{4}\)/.test(text)) {
+          if (!text.toLowerCase().includes('tough guy') && !text.toLowerCase().includes('track your read')) {
+            candidateBooks.push(text);
+          }
+        }
+      }
+    }
+
+    const foundBook = candidateBooks[0];
+
     if (!foundBook) {
-      throw new Error('Could not parse the current book title from the HTML structure.');
+      throw new Error('Could not parse a valid book title from the page content.');
     }
 
     console.log('Found current book:', foundBook);

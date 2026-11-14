@@ -2,7 +2,7 @@ name: Update Tough Guy Book Club Book
 
 on:
   schedule:
-    - cron: '0 8 4 * *' # Runs monthly on the 4th day
+    - cron: '0 8 * * 1' # Runs monthly on the 4th day
   workflow_dispatch:      # Allows you to manually trigger it anytime from the GitHub Actions tab
 
 permissions:
@@ -27,5 +27,5 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]"@users.noreply.github.com
-          git add data/current-book.json
+          git add tgbc.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update current book of the month [skip ci]" && git push)
