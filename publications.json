@@ -1,52 +1,79 @@
 {
   "publications": [
     {
-      "title": "[Paper Title 1]",
+      "title": "Beauty is in the ELBO of the Beholder: A Variational Account of Processing Fluency in Face Perception",
       "authors": [
-        "Author 1*",
-        "Author 2*",
-        "Author 3",
-        "Author 4",
-        "Author 5",
-        "Author 6",
-        "Author 7",
-        "Author 8",
-        "Author 9",
-        "Author 10",
-        "Author 11†",
-        "Author 12†"
+        "Francisco M. López",
+        "Jochen Triesch"
       ],
-      "venue": "Preprint (2025)",
-      "thumbnail": "images/thumbs/1.jpg",
-      "selected": 1,
-      "award": "",
-      "links": {
-        "pdf": "#",
-        "code": "#",
-        "project": "#"
-      }
-    },
-    {
-      "title": "[Paper Title 2]",
-      "authors": [
-        "Author 1*",
-        "Author 2*",
-        "Author 3",
-        "Author 4",
-        "Author 5",
-        "Author 6",
-        "Author 7",
-        "Author 8",
-        "Author 9",
-        "Author 10",
-        "Author 11"
-      ],
-      "venue": "Preprint (2025)",
-      "thumbnail": "images/thumbs/2.jpg",
+      "venue": "Proceedings of Machine Learning Research (2026)",
+      "thumbnail": "images/thumbs/lopez2026beauty.png",
       "selected": 0,
       "award": "",
       "links": {
-        "pdf": "#"
+        "paper": "https://arxiv.org/pdf/2608.24219"
+      }
+    },
+
+    {
+      "title": "Embodiment Shapes Rolling in a Multimodal Infant Model",
+      "authors": [
+        "Leon Philip",
+        "Francisco M. López",
+        "Jochen Triesch"
+      ],
+      "venue": "IEEE International Conference on Development and Learning (2026)",
+      "thumbnail": "images/thumbs/philip2026embodiment.png",
+      "selected": 0,
+      "award": "Babybot Paper Award",
+      "links": {
+        "pdf": "https://arxiv.org/pdf/2606.17456"
+      }
+    },
+
+    {
+      "title": "Efficient Coding in Active Perception: A Developmental Perspective on Autonomous Control",
+      "authors": [
+        "Francisco M. López",
+        "Bertram E. Shi",
+        "Jochen Triesch"
+      ],
+      "venue": "Advances in Child Development and Behavior (2026)",
+      "thumbnail": "images/thumbs/lopez2026efficient.png",
+      "selected": 1,
+      "links": {
+        "paper": "https://www.sciencedirect.com/science/chapter/bookseries/abs/pii/S0065240726000054"
+      }
+    },
+
+    {
+      "title": "MIMo grows! Simulating body and sensory development in a multimodal infant model",
+      "authors": [
+        "Francisco M. López*",
+        "Miles Lenz*",
+        "Marco G. Fedozzi*",
+        "Arthur Aubret",
+        "Jochen Triesch"
+      ],
+      "venue": "IEEE International Conference on Development and Learning (2025)",
+      "thumbnail": "images/thumbs/lopez2025mimo.png",
+      "selected": 1,
+      "links": {
+        "paper": "https://arxiv.org/pdf/2509.09805"
+      }
+    },
+
+    {
+      "title": "Inhibitory dynamics in dual-route evidence accumulation account for response time distributions from conflict tasks",
+      "authors": [
+        "Francisco M. López",
+        "Andrés Pomi"
+      ],
+      "venue": "Cognitive Neurodynamics (2024)",
+      "thumbnail": "images/thumbs/lopez2024inhibitory.png",
+      "selected": 1,
+      "links": {
+        "paper": "https://link.springer.com/article/10.1007/s11571-023-09990-8"
       }
     }
   ]

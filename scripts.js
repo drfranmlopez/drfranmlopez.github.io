@@ -106,7 +106,7 @@ function createPublicationElement(publication) {
   // Format authors with highlighting
   let authorsHTML = '';
   publication.authors.forEach((author, index) => {
-    if (author.includes('Author 3')) { // TODO: Highlight specific author
+    if (author.includes("Francisco M. López")) { // TODO: Highlight specific author
       authorsHTML += `<span class="highlight-name">${author}</span>`;
     } else {
       authorsHTML += author;
@@ -143,18 +143,25 @@ function createPublicationElement(publication) {
   if (publication.links) {
     const links = document.createElement('div');
     links.className = 'pub-links';
-    
-    if (publication.links.pdf) {
-      const pdfLink = document.createElement('a');
-      pdfLink.href = publication.links.pdf;
-      pdfLink.textContent = '[PDF]';
-      links.appendChild(pdfLink);
+
+    if (publication.links.paper) {
+      const paperLink = document.createElement('a');
+      paperLink.href = publication.links.paper;
+      paperLink.textContent = 'Paper';
+      links.appendChild(paperLink);
     }
-    
+        
+    if (publication.links.bibtex) {
+      const bibtexLink = document.createElement('a');
+      bibtexLink.href = publication.links.bibtex;
+      bibtexLink.textContent = 'Bibtex';
+      links.appendChild(paperLink);
+    }
+
     if (publication.links.code) {
       const codeLink = document.createElement('a');
       codeLink.href = publication.links.code;
-      codeLink.textContent = '[Code]';
+      codeLink.textContent = 'Code';
       links.appendChild(codeLink);
     }
     
@@ -164,6 +171,8 @@ function createPublicationElement(publication) {
       projectLink.textContent = '[Project Page]';
       links.appendChild(projectLink);
     }
+
+    
     
     content.appendChild(links);
   }
