@@ -210,3 +210,11 @@ window.onclick = function(event) {
     closeModal();
   }
 }
+
+
+// Update TGBC book of the month
+fetch('tgbc.json')
+.then(res => res.json())
+.then(data => {
+  document.getElementById('tgbc-book').textContent = data.raw;
+});

@@ -58,7 +58,7 @@ async function updateBook() {
       updatedAt: new Date().toISOString()
     };
 
-    const filePath = path.join(__dirname, './tgbc.json');
+    const filePath = path.join(__dirname, 'tgbc.json');
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
     console.log('Successfully updated current-book.json');
   } catch (error) {

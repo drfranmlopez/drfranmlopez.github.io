@@ -138,16 +138,5 @@
         <img class="modal-content" id="modalImage">
     </div>
     <script src="scripts.js"></script>
-    <script>
-        // Adjust the path to wherever current-book.json sits relative to your built site
-        fetch('./tgbc.json')
-          .then(res => res.json())
-          .then(data => {
-            document.getElementById('tgbc-book').textContent = data.raw;
-          })
-          .catch(() => {
-            document.getElementById('tgbc-book').textContent = 'Voss by Patrick White';
-          });
-      </script>
 </body>
 </html>
